@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>My Blog</title>
+  </head>
+<main class="container mt-3 pb-5">
+    <div class="card">
+          <div class="card-body px-4 pb-4">
+            <section class="tab-pane fade show active">
+              <h2 class="h4 pt-2 pb-3">Мои блог</h2>
+              {% for blog in blog_list %}
+              <div class="card mt-3">
+                <div class="card-body px-4">
+                  <div class="row align-items-center">
+                    <div class="col-6 col-lg-8">
+                      <a class="mb-1">{{ blog.title }}</a>
+                      <p class="mb-1">
+                        <a class="text">Опубликовано: {{ blog.publish|date }}</a>
+                      </p>
+                        <p class="mb-2">
+                          <a class="text" >Комментарии: {{ comments_list.count }} </a>
+                      </p>
+                    </div>
+                    <div class="col-6 col-lg-4 text-right">
+                      <a href="{% url "check_comments" blog.id %}" class="btn btn-outline-info btn-sm">Просмотреть</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+                {% endfor %}
+              <div class="form-group pt-4">
+              <a href="{% url "create_record" %}" class="btn btn-info">Добавить запись в блог</a>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
